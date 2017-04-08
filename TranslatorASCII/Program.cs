@@ -7,16 +7,22 @@ namespace TranslatorASCII
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Wpisz ciag znakow");
-            var x = Console.ReadLine();
-            // string value = "9quali52ty3+-/*";
+            char[] delimiterChars = { '+', '-', '=', '*', '/' };
 
-            var y =ASCIIGetter.codes(x);
-            foreach (var item in x)
+            string text = "9A+4-g=9";
+            System.Console.WriteLine("Original text: '{0}'", text);
+
+            string[] words = text.Split(delimiterChars);
+            System.Console.WriteLine("{0} words in text:", words.Length);
+
+            foreach (string s in words)
             {
-                Console.WriteLine(item);
+                System.Console.WriteLine(s);
             }
-            //ASCIIGetter.Comparator(y);
+
+            // Keep the console window open in debug mode.
+            System.Console.WriteLine("Press any key to exit.");
+            System.Console.ReadKey();
 
         }
     }
