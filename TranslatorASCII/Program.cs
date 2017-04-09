@@ -7,22 +7,45 @@ namespace TranslatorASCII
     {
         static void Main(string[] args)
         {
-            char[] delimiterChars = { '+', '-', '=', '*', '/' };
-
-            string text = "9A+4-g=9";
-            System.Console.WriteLine("Original text: '{0}'", text);
-
-            string[] words = text.Split(delimiterChars);
-            System.Console.WriteLine("{0} words in text:", words.Length);
-
-            foreach (string s in words)
+            string CurrentString = "g+6/l-9";
+            for (int i = 0; i < CurrentString.Length; i++)
             {
-                System.Console.WriteLine(s);
+                Console.WriteLine(CurrentString[i] + "\t" + "Unicode code is: " + (int)CurrentString[i]);
+                int value = (int)CurrentString[i];
+                if (value == 40)
+                {
+                    Console.WriteLine("Opening bracket");
+                }
+                if (value == 41)
+                {
+                    Console.WriteLine("Closing bracket");
+                }
+                if (value == 43)
+                {
+                    Console.WriteLine("Add operator");
+                }
+                if (value == 44)
+                {
+                    Console.WriteLine("Multiplication operator");
+                }
+                if (value == 45)
+                {
+                    Console.WriteLine("Substration operator");
+                }
+                if (value == 47)
+                {
+                    Console.WriteLine("Division operator");
+                }
+                if (value >= 65 && value <= 90)
+                {
+                    Console.WriteLine("duza literka");
+                }
+                else if (value >= 97 && value <= 122)
+                {
+                    Console.WriteLine("mala literka");
+                }
             }
 
-            // Keep the console window open in debug mode.
-            System.Console.WriteLine("Press any key to exit.");
-            System.Console.ReadKey();
 
         }
     }

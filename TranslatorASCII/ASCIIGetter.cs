@@ -51,22 +51,22 @@ namespace TranslatorASCII
                 }
                 if (item>=65 && item<=90)
                 {
-                    Console.WriteLine("duza literka");
+                    Console.WriteLine("Capital letter identyficator");
                 }
                 else if (item >= 97 && item <= 122)
                 {
-                    Console.WriteLine("mala literka");
+                    Console.WriteLine("Small letter identyficator");
                 }
 
                 
             }
         }
 
-        static void cutt()
+        static void cutt(string text)
         {
             char[] delimiterChars = { '+', '-', '=', '*', '/' };
 
-            string text = "9A+4-g=9";
+            //string text = "9A+4-g=9";
             System.Console.WriteLine("Original text: '{0}'", text);
 
             string[] words = text.Split(delimiterChars);
@@ -82,6 +82,40 @@ namespace TranslatorASCII
             System.Console.ReadKey();
         }
 
+        public static void FindOperators(string CurrentString)
+        {
+           
+            for (int i = 0; i < CurrentString.Length; i++)
+            {
+                Console.WriteLine(CurrentString[i] + "\t" + "Unicode code is: " + (int)CurrentString[i]);
+                int value = (int)CurrentString[i];
+                if (value == 40)
+                {
+                    Console.WriteLine(CurrentString[i] + "Opening bracket");
+                }
+                if (value == 41)
+                {
+                    Console.WriteLine(CurrentString[i] + "Closing bracket");
+                }
+                if (value == 43)
+                {
+                    Console.WriteLine(CurrentString[i] + "Add operator");
+                }
+                if (value == 44)
+                {
+                    Console.WriteLine(CurrentString[i] + "Multiplication operator");
+                }
+                if (value == 45)
+                {
+                    Console.WriteLine(CurrentString[i] + "Substration operator");
+                }
+                if (value == 47)
+                {
+                    Console.WriteLine(CurrentString[i] + "Division operator");
+                }
+            }
+           
+        }
 
 
     }
