@@ -46,7 +46,7 @@ namespace TranslatorASCII
         //^^ zbędne
         public static void cutt(string text)
         {
-            char[] delimiterChars = { '+', '-', '=', '*', '/' ,'(' ,')','{','}', '|'};
+            char[] delimiterChars = { '+', '-', '=', '*', '/' ,'(' ,')','{','}', '|', ' '};
 
             //string text = "9A+4-g=9";
             System.Console.WriteLine("Original text: '{0}'", text);
@@ -89,7 +89,7 @@ namespace TranslatorASCII
             }
             else
             {
-                Console.WriteLine("Syntax error");
+              //  Console.WriteLine("Syntax error");
             }
             
         }
