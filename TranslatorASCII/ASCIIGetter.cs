@@ -57,7 +57,7 @@ namespace TranslatorASCII
             foreach (string s in words)
             {
                 System.Console.WriteLine(s);
-                if (IsDigit(s)==true)
+                if (cutForDouble(s)==true)
                 {
                     IntOrDouble(s);
                 }
@@ -74,7 +74,7 @@ namespace TranslatorASCII
         }
         public static void IntOrDouble(string text)
         {
-            if ((text.Contains(".") || text.Contains(","))&&cutForDouble(text)==true)
+            if ((text.Contains(".") || text.Contains(","))&&cutForDouble(text)==true&&(text.Length)>0)
             {
                 
                 Console.WriteLine("Double");
