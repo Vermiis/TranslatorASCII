@@ -13,6 +13,7 @@ namespace TranslatorASCII
             own=Console.ReadLine();
             ASCIIGetter.cutt(own);
             ASCIIGetter.FindOperators(own);
+            Console.ReadKey();
 
 
         }
