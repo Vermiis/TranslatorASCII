@@ -10,24 +10,24 @@ namespace TranslatorASCII
         public static List<int> codes(string tekst)
         {
             //string value = "9quali52ty3+-/*";
-            List<int> CodesList=null;
+            List<int> CodesList = null;
 
             // Convert the string into a byte[].
             byte[] asciiBytes = Encoding.ASCII.GetBytes(tekst);
             foreach (var item in asciiBytes)
             {
-                
-                CodesList.Add(item);               
+
+                CodesList.Add(item);
             }
             return CodesList;
         }
-        public static void Comparator (string CurrentString)
+        public static void Comparator(string CurrentString)
         {
             //int value = (int)CurrentString[i];
             foreach (var item in CurrentString)
             {
-                
-                if (item>=65 && item<=90)
+
+                if (item >= 65 && item <= 90)
                 {
                     Console.WriteLine("Capital letter identyficator");
                 }
@@ -40,13 +40,13 @@ namespace TranslatorASCII
                     IntOrDouble(item.ToString());
                 }
 
-                
+
             }
         }
         //^^ zbędne
         public static void cutt(string text)
         {
-            char[] delimiterChars = { '+', '-', '=', '*', '/' ,'(' ,')','{','}', '|', ' ' ,'[',']'};
+            char[] delimiterChars = { '+', '-', '=', '*', '/', '(', ')', '{', '}', '|', ' ', '[', ']' };
 
             //string text = "9A+4-g=9";
             System.Console.WriteLine("Original text: '{0}'", text);
@@ -57,7 +57,7 @@ namespace TranslatorASCII
             foreach (string s in words)
             {
                 System.Console.WriteLine(s);
-                if (cutForDouble(s)==true)
+                if (cutForDouble(s) == true)
                 {
                     IntOrDouble(s);
                 }
@@ -69,18 +69,18 @@ namespace TranslatorASCII
                 {
                     Console.WriteLine("Item contais one or more letters, it's ident then");
                 }
-                
+
             }
 
-            
+
             System.Console.WriteLine("Press any key to see operators in text.");
             System.Console.ReadKey();
         }
         public static void IntOrDouble(string text)
         {
-            if ((text.Contains(".") || text.Contains(","))&&cutForDouble(text)==true&&(text.Length)>0)
+            if ((text.Contains(".") || text.Contains(",")) && cutForDouble(text) == true && (text.Length) > 0)
             {
-                
+
                 Console.WriteLine("Double");
             }
             else if ((!text.Contains(".") || !text.Contains(",")) && (text.Length) > 0 && IsDigit(text))
@@ -89,9 +89,9 @@ namespace TranslatorASCII
             }
             else
             {
-              //  Console.WriteLine("Syntax error");
+                //  Console.WriteLine("Syntax error");
             }
-            
+
         }
 
         public static void FindOperators(string CurrentString)
@@ -100,7 +100,7 @@ namespace TranslatorASCII
             Console.WriteLine("Operators found in text:");
             for (int i = 0; i < CurrentString.Length; i++)
             {
-               // Console.WriteLine(CurrentString[i] + "\t" + "Unicode code is: " + (int)CurrentString[i]);
+                // Console.WriteLine(CurrentString[i] + "\t" + "Unicode code is: " + (int)CurrentString[i]);
                 int value = (int)CurrentString[i];
                 if (value == 40)
                 {
@@ -118,7 +118,7 @@ namespace TranslatorASCII
                 {
                     Console.WriteLine(CurrentString[i] + "Add operator");
                 }
-               
+
                 if (value == 45)
                 {
                     Console.WriteLine(CurrentString[i] + "Substration operator");
@@ -139,29 +139,29 @@ namespace TranslatorASCII
                 {
                     Console.WriteLine(CurrentString[i] + "Closing bracket");
                 }
-                if (value== 123)
+                if (value == 123)
                 {
                     Console.WriteLine(CurrentString[i] + "Opening bracket");
                 }
-                if (value==124)
+                if (value == 124)
                 {
                     Console.WriteLine(CurrentString[i] + "|");
                 }
-                if (value==125)
+                if (value == 125)
                 {
                     Console.WriteLine(CurrentString[i] + "Closing bracket");
                 }
             }
-           
+
         }
         public static bool cutForDouble(string text)
         {
-            char[] delimiterChars = { '.', ',' };          
+            char[] delimiterChars = { '.', ',' };
             string[] words = text.Split(delimiterChars);
             //if (text.Count().Select(delimiterChars))
-            var x=text.Count(c => c == '.');
-            var y= text.Count(c => c == ',');
-            if ((y>=1) || x>=1)
+            var x = text.Count(c => c == '.');
+            var y = text.Count(c => c == ',');
+            if (((y >= 2) || x >= 2) || text.Contains('.') && text.Contains(','))
             {
                 return false;
             }
