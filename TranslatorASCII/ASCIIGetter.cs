@@ -46,7 +46,7 @@ namespace TranslatorASCII
         //^^ zbędne
         public static void cutt(string text)
         {
-            char[] delimiterChars = { '+', '-', '=', '*', '/' ,'(' ,')','{','}', '|', ' '};
+            char[] delimiterChars = { '+', '-', '=', '*', '/' ,'(' ,')','{','}', '|', ' ' ,'[',']'};
 
             //string text = "9A+4-g=9";
             System.Console.WriteLine("Original text: '{0}'", text);
@@ -130,6 +130,14 @@ namespace TranslatorASCII
                 if (value == 61)
                 {
                     Console.WriteLine(CurrentString[i] + "Equals operator");
+                }
+                if (value == 91)
+                {
+                    Console.WriteLine(CurrentString[i] + "Opening bracket");
+                }
+                if (value == 93)
+                {
+                    Console.WriteLine(CurrentString[i] + "Closing bracket");
                 }
                 if (value== 123)
                 {
