@@ -21,7 +21,6 @@ namespace TranslatorASCII
             }
             return CodesList;
         }
-
         public static void Comparator (string CurrentString)
         {
             //int value = (int)CurrentString[i];
@@ -44,6 +43,7 @@ namespace TranslatorASCII
                 
             }
         }
+        //^^ zbędne
         public static void cutt(string text)
         {
             char[] delimiterChars = { '+', '-', '=', '*', '/' };
@@ -68,8 +68,8 @@ namespace TranslatorASCII
                 
             }
 
-            // Keep the console window open in debug mode.
-            System.Console.WriteLine("Press any key to exit.");
+            
+            System.Console.WriteLine("Press any key to see operators in text.");
             System.Console.ReadKey();
         }
         public static void IntOrDouble(string text)
