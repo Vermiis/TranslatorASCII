@@ -158,6 +158,13 @@ namespace TranslatorASCII
         {
             char[] delimiterChars = { '.', ',' };          
             string[] words = text.Split(delimiterChars);
+            //if (text.Count().Select(delimiterChars))
+            var x=text.Count(c => c == '.');
+            var y= text.Count(c => c == ',');
+            if (y>1 || x>1)
+            {
+                return false;
+            }
             bool CorrectDouble = false;
             
             foreach (var item in words)
