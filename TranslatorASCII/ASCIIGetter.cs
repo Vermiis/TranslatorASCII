@@ -61,6 +61,10 @@ namespace TranslatorASCII
                 {
                     IntOrDouble(s);
                 }
+                else if ((s.Contains(".") || s.Contains(",")) && cutForDouble(text) == false && (text.Length) > 0)
+                {
+                    Console.WriteLine("Syntax ERROR");
+                }
                 else
                 {
                     Console.WriteLine("Item contais one or more letters, it's ident then");
@@ -79,13 +83,13 @@ namespace TranslatorASCII
                 
                 Console.WriteLine("Double");
             }
-            else if ((!text.Contains(".") || !text.Contains(",")))
+            else if ((!text.Contains(".") || !text.Contains(",")) && (text.Length) > 0 && IsDigit(text))
             {
                 Console.WriteLine("Integer");
             }
             else
             {
-                Console.WriteLine("X");
+                Console.WriteLine("Syntax error");
             }
             
         }
@@ -127,6 +131,18 @@ namespace TranslatorASCII
                 {
                     Console.WriteLine(CurrentString[i] + "Equals operator");
                 }
+                if (value== 123)
+                {
+                    Console.WriteLine(CurrentString[i] + "Opening bracket");
+                }
+                if (value==124)
+                {
+                    Console.WriteLine(CurrentString[i] + "|");
+                }
+                if (value==125)
+                {
+                    Console.WriteLine(CurrentString[i] + "Closing bracket");
+                }
             }
            
         }
@@ -135,11 +151,16 @@ namespace TranslatorASCII
             char[] delimiterChars = { '.', ',' };          
             string[] words = text.Split(delimiterChars);
             bool CorrectDouble = false;
+            
             foreach (var item in words)
             {
                 if (IsDigit(item)==true)
                 {
                     CorrectDouble = true;
+                }
+                else
+                {
+                    CorrectDouble = false;
                 }
                
             }
@@ -150,10 +171,7 @@ namespace TranslatorASCII
         {
 
             bool allDigits = text.All(char.IsDigit);
-            if (text.All(char.IsDigit) )
-            {
-
-            }
+            
            
             return allDigits;
         }
