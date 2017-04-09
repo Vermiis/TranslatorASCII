@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace TranslatorASCII
@@ -21,34 +22,12 @@ namespace TranslatorASCII
             return CodesList;
         }
 
-        public static void Comparator (List<int> val)
+        public static void Comparator (string CurrentString)
         {
-            foreach (var item in val)
+            //int value = (int)CurrentString[i];
+            foreach (var item in CurrentString)
             {
-                if (item==40)
-                {
-                    Console.WriteLine("Opening bracket");
-                }
-                if (item==41)
-                {
-                    Console.WriteLine("Closing bracket");
-                }
-                if (item==43)
-                {
-                    Console.WriteLine("Add operator");
-                }
-                if (item==44)
-                {
-                    Console.WriteLine("Multiplication operator");
-                }
-                if (item==45)
-                {
-                    Console.WriteLine("Substration operator");
-                }
-                if (item==47)
-                {
-                    Console.WriteLine("Division operator");
-                }
+                
                 if (item>=65 && item<=90)
                 {
                     Console.WriteLine("Capital letter identyficator");
@@ -57,12 +36,15 @@ namespace TranslatorASCII
                 {
                     Console.WriteLine("Small letter identyficator");
                 }
+                else
+                {
+                    IntOrDouble(item.ToString());
+                }
 
                 
             }
         }
-
-        static void cutt(string text)
+        public static void cutt(string text)
         {
             char[] delimiterChars = { '+', '-', '=', '*', '/' };
 
@@ -75,19 +57,46 @@ namespace TranslatorASCII
             foreach (string s in words)
             {
                 System.Console.WriteLine(s);
+                if (IsDigit(s)==true)
+                {
+                    IntOrDouble(s);
+                }
+                else
+                {
+                    Console.WriteLine("Item contais one or more letters, it's ident then");
+                }
+                
             }
 
             // Keep the console window open in debug mode.
             System.Console.WriteLine("Press any key to exit.");
             System.Console.ReadKey();
         }
+        public static void IntOrDouble(string text)
+        {
+            if ((text.Contains(".") || text.Contains(","))&&cutForDouble(text)==true)
+            {
+                
+                Console.WriteLine("Double");
+            }
+            else if ((!text.Contains(".") || !text.Contains(",")))
+            {
+                Console.WriteLine("Integer");
+            }
+            else
+            {
+                Console.WriteLine("X");
+            }
+            
+        }
 
         public static void FindOperators(string CurrentString)
         {
-           
+
+            Console.WriteLine("Operators found in text:");
             for (int i = 0; i < CurrentString.Length; i++)
             {
-                Console.WriteLine(CurrentString[i] + "\t" + "Unicode code is: " + (int)CurrentString[i]);
+               // Console.WriteLine(CurrentString[i] + "\t" + "Unicode code is: " + (int)CurrentString[i]);
                 int value = (int)CurrentString[i];
                 if (value == 40)
                 {
@@ -97,14 +106,15 @@ namespace TranslatorASCII
                 {
                     Console.WriteLine(CurrentString[i] + "Closing bracket");
                 }
+                if (value == 42)
+                {
+                    Console.WriteLine(CurrentString[i] + "Multiplication operator");
+                }
                 if (value == 43)
                 {
                     Console.WriteLine(CurrentString[i] + "Add operator");
                 }
-                if (value == 44)
-                {
-                    Console.WriteLine(CurrentString[i] + "Multiplication operator");
-                }
+               
                 if (value == 45)
                 {
                     Console.WriteLine(CurrentString[i] + "Substration operator");
@@ -113,9 +123,42 @@ namespace TranslatorASCII
                 {
                     Console.WriteLine(CurrentString[i] + "Division operator");
                 }
+                if (value == 61)
+                {
+                    Console.WriteLine(CurrentString[i] + "Equals operator");
+                }
             }
            
         }
+        public static bool cutForDouble(string text)
+        {
+            char[] delimiterChars = { '.', ',' };          
+            string[] words = text.Split(delimiterChars);
+            bool CorrectDouble = false;
+            foreach (var item in words)
+            {
+                if (IsDigit(item)==true)
+                {
+                    CorrectDouble = true;
+                }
+               
+            }
+            return CorrectDouble;
+        }
+
+        public static bool IsDigit(string text)
+        {
+
+            bool allDigits = text.All(char.IsDigit);
+            if (text.All(char.IsDigit) )
+            {
+
+            }
+           
+            return allDigits;
+        }
+
+
 
 
     }
