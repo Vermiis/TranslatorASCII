@@ -7,43 +7,7 @@ namespace TranslatorASCII
 {
     class ASCIIGetter
     {
-        public static List<int> codes(string tekst)
-        {
-            //string value = "9quali52ty3+-/*";
-            List<int> CodesList = null;
-
-            // Convert the string into a byte[].
-            byte[] asciiBytes = Encoding.ASCII.GetBytes(tekst);
-            foreach (var item in asciiBytes)
-            {
-
-                CodesList.Add(item);
-            }
-            return CodesList;
-        }
-        public static void Comparator(string CurrentString)
-        {
-            //int value = (int)CurrentString[i];
-            foreach (var item in CurrentString)
-            {
-
-                if (item >= 65 && item <= 90)
-                {
-                    Console.WriteLine("Capital letter identyficator");
-                }
-                else if (item >= 97 && item <= 122)
-                {
-                    Console.WriteLine("Small letter identyficator");
-                }
-                else
-                {
-                    IntOrDouble(item.ToString());
-                }
-
-
-            }
-        }
-        //^^ zbędne
+        
         public static void cutt(string text)
         {
             char[] delimiterChars = { '+', '-', '=', '*', '/', '(', ')', '{', '}', '|', ' ', '[', ']' };
@@ -65,16 +29,21 @@ namespace TranslatorASCII
                 {
                     Console.WriteLine("Syntax ERROR");
                 }
-                else
+                else if (IsIdent(text) == true && (text.Length) > 0)
                 {
-                    Console.WriteLine("Item contais one or more letters, it's ident then");
+                    Console.WriteLine("IDENT");
                 }
+                else if (cutForDouble(text)==false)
+                {
+                    CutDobuleAnddot(text);
+                }
+               
+
 
             }
 
 
-            System.Console.WriteLine("Press any key to see operators in text.");
-            System.Console.ReadKey();
+            
         }
         public static void IntOrDouble(string text)
         {
@@ -93,7 +62,6 @@ namespace TranslatorASCII
             }
 
         }
-
         public static void FindOperators(string CurrentString)
         {
 
@@ -159,13 +127,22 @@ namespace TranslatorASCII
             char[] delimiterChars = { '.', ',' };
             string[] words = text.Split(delimiterChars);
             //if (text.Count().Select(delimiterChars))
+            bool CorrectDouble = false;
+            //kontrola czy zawiera wiecej niz jeden , lub .
             var x = text.Count(c => c == '.');
             var y = text.Count(c => c == ',');
-            if (((y >= 2) || x >= 2) || text.Contains('.') && text.Contains(','))
+            //if (((y >= 2) || x >= 2) || text.Contains('.') && text.Contains(','))
+            //{
+            //    int idx = text.LastIndexOf('.');
+            //    Console.WriteLine(text.Substring(0, idx));
+            //    Console.WriteLine(text.Substring(idx + 1));
+            //}
+            if ((((y >= 2) || x >= 2) || text.Contains('.') && text.Contains(',')))
             {
                 return false;
-            }
-            bool CorrectDouble = false;
+                
+            }           
+            
             
             foreach (var item in words)
             {
@@ -189,6 +166,47 @@ namespace TranslatorASCII
             
            
             return allDigits;
+        }
+        public static bool IsIdent (string text)
+        {
+            bool isLetter = !String.IsNullOrEmpty(text) && Char.IsLetter(text[0]);
+            if (isLetter == true)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        public static void CutIdentAndInt(string text)
+        {
+            if (IsIdent(text)==false)
+            {
+                //123 - int  abc-ident
+                //123xyz123ab  123 int xyz123ab ident
+
+
+
+            }
+        }
+        public static void CutDobuleAnddot(string text)
+        {
+            
+            if (text.Count(c => c == '.')>=2)
+            {
+                int lastDotIndex = text.LastIndexOf(".", System.StringComparison.Ordinal);
+                string firstPart = text.Remove(lastDotIndex);
+                string secondPart = text.Substring(lastDotIndex + 1, text.Length - firstPart.Length - 1);
+                Console.WriteLine(firstPart +"DOUBLE");
+                Console.WriteLine('.'+secondPart+" ERROR");
+            }
+            else if (text.Count(c => c == ',')>=2)
+            {
+                int lastDotIndex = text.LastIndexOf(",", System.StringComparison.Ordinal);
+                string firstPart = text.Remove(lastDotIndex);
+                string secondPart = text.Substring(lastDotIndex + 1, text.Length - firstPart.Length - 1);
+                Console.WriteLine(firstPart + "DOUBLE");
+                Console.WriteLine(','+secondPart + " ERROR");
+            }
         }
 
 
