@@ -27,7 +27,8 @@ namespace TranslatorASCII
                 }
                 else if ((s.Contains(".") || s.Contains(",")) && cutForDouble(text) == false && (text.Length) > 0)
                 {
-                    Console.WriteLine("Syntax ERROR");
+                   // Console.WriteLine("Syntax ERROR");
+                    CutDobuleAnddot(s);
                 }
                 else if (IsIdent(text) == true && (text.Length) > 0)
                 {
