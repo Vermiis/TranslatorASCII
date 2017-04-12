@@ -74,11 +74,11 @@ namespace TranslatorASCII
             char[] delimiterChars = { '+', '-', '=', '*', '/', '(', ')', '{', '}', '|', ' ', '[', ']' };
 
             //string text = "9A+4-g=9";
-            System.Console.WriteLine("Original text: '{0}'", text);
+           // System.Console.WriteLine("Original text: '{0}'", text);
 
             string[] words = text.Split(delimiterChars);
             List<string> Wordz = new List<string>();
-            System.Console.WriteLine("{0} words in text:", words.Length);
+           // System.Console.WriteLine("{0} words in text:", words.Length);
 
             foreach (string s in words)
             {
