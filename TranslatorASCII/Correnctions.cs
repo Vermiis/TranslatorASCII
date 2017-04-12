@@ -40,11 +40,11 @@ namespace TranslatorASCII
             //    Console.WriteLine(text.Substring(0, idx));
             //    Console.WriteLine(text.Substring(idx + 1));
             //}
-            if ((((y >= 2) || x >= 2) || text.Contains('.') && text.Contains(',')))
-            {
-                return false;
+            //if ((((y >= 2) || x >= 2) || text.Contains('.') && text.Contains(',')))
+            //{
+            //    return false;
 
-            }
+            //}
 
 
             foreach (var item in words)
