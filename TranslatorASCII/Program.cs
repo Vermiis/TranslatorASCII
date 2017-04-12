@@ -19,14 +19,16 @@ namespace TranslatorASCII
             string own = "";
 
             
-            //now we have t1.Result and t2.Result
+            
 
             own = Console.ReadLine();
             List<string> ops =Operators.FindOperators(own);
-            
+            var wor = Operators.FindWords(own);
 
 
-            ASCIIGetter.cutt(own);
+            Operators.NameWords(own);
+
+            //ASCIIGetter.cutt(own);
            // ASCIIGetter.CutDobuleAnddot(own);
 
 
