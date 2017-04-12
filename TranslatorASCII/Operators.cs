@@ -8,7 +8,7 @@ namespace TranslatorASCII
     {
         public static List<string> FindOperators(string CurrentString)
         {
-            List<string> operators=null;
+            List<string> operators = new List<string>();
             Console.WriteLine("Operators found in text:");
             for (int i = 0; i < CurrentString.Length; i++)
             {
@@ -77,7 +77,7 @@ namespace TranslatorASCII
             System.Console.WriteLine("Original text: '{0}'", text);
 
             string[] words = text.Split(delimiterChars);
-            List<string> Wordz = null;
+            List<string> Wordz = new List<string>();
             System.Console.WriteLine("{0} words in text:", words.Length);
 
             foreach (string s in words)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace TranslatorASCII
             //now we have t1.Result and t2.Result
 
             own = Console.ReadLine();
-            Operators.FindOperators(own);
+            List<string> ops =Operators.FindOperators(own);
             
 
 
@@ -31,7 +32,10 @@ namespace TranslatorASCII
 
             System.Console.WriteLine("Press any key to see operators in text.");
             System.Console.ReadKey();
-            ASCIIGetter.FindOperators(own);
+            foreach (var item in ops)
+            {
+                Console.WriteLine(item);
+            }
             
             Console.ReadKey();
 
