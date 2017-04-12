@@ -21,7 +21,9 @@ namespace TranslatorASCII
             //now we have t1.Result and t2.Result
 
             own = Console.ReadLine();
-            Aschynchro.RunAllAsync(own);
+            Operators.FindOperators(own);
+            
+
 
             ASCIIGetter.cutt(own);
            // ASCIIGetter.CutDobuleAnddot(own);
