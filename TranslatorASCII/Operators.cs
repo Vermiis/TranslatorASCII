@@ -9,14 +9,14 @@ namespace TranslatorASCII
         public static List<string> FindOperators(string CurrentString)
         {
             List<string> operators = new List<string>();
-            Console.WriteLine("Operators found in text:");
+            
             for (int i = 0; i < CurrentString.Length; i++)
             {
                 // Console.WriteLine(CurrentString[i] + "\t" + "Unicode code is: " + (int)CurrentString[i]);
                 int value = (int)CurrentString[i];
                 if (value == 40)
                 {
-                    Console.WriteLine(CurrentString[i] + "Opening bracket");
+                    //Console.WriteLine(CurrentString[i] + "Opening bracket");
                     operators.Add(CurrentString[i] + "Opening bracket");
                 }
                 if (value == 41)
@@ -82,7 +82,7 @@ namespace TranslatorASCII
 
             foreach (string s in words)
             {
-                System.Console.WriteLine(s);
+                //System.Console.WriteLine(s);
                 Wordz.Add(s);
                 //if (ASCIIGetter.cutForDouble(s) == true)
                 //{

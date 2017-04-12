@@ -23,7 +23,7 @@ namespace TranslatorASCII
 
             own = Console.ReadLine();
             List<string> ops =Operators.FindOperators(own);
-            var wor = Operators.FindWords(own);
+            //var wor = Operators.FindWords(own);
 
 
             Operators.NameWords(own);
@@ -34,6 +34,7 @@ namespace TranslatorASCII
 
             System.Console.WriteLine("Press any key to see operators in text.");
             System.Console.ReadKey();
+            Console.WriteLine("Operators found in text:");
             foreach (var item in ops)
             {
                 Console.WriteLine(item);
