@@ -84,6 +84,40 @@ namespace TranslatorASCII
             {
                 System.Console.WriteLine(s);
                 Wordz.Add(s);
+                //if (ASCIIGetter.cutForDouble(s) == true)
+                //{
+                //    OnlyBool.IntOrDouble(s);
+                //}
+                //else if ((s.Contains(".") || s.Contains(",")) && ASCIIGetter.cutForDouble(text) == false && (text.Length) > 0)
+                //{
+                //    // Console.WriteLine("Syntax ERROR");
+                //    ASCIIGetter.CutDobuleAnddot(s);
+                //}
+                //else if (OnlyBool.IsIdent(text) == true && (text.Length) > 0)
+                //{
+                //    Console.WriteLine("IDENT");
+                //}
+                //else if (ASCIIGetter.cutForDouble(text) == false)
+                //{
+                //    ASCIIGetter.CutDobuleAnddot(text);
+                //}
+
+
+
+            }
+            return Wordz;
+
+
+
+        }
+
+        public static void NameWords (string text)
+        {
+            FindWords(text);
+            foreach (string s in FindWords(text))
+            {
+                System.Console.WriteLine(s);
+                //words.Add(s);
                 if (ASCIIGetter.cutForDouble(s) == true)
                 {
                     OnlyBool.IntOrDouble(s);
@@ -105,11 +139,11 @@ namespace TranslatorASCII
 
 
             }
-            return Wordz;
-
-
-
         }
+
+
+
+
 
 
     }
