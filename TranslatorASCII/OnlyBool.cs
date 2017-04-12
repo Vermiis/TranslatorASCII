@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TranslatorASCII
 {
-    class Correnctions
+    class OnlyBool
     {
         public static bool IsDigit(string text)
         {

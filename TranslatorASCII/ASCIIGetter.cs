@@ -191,7 +191,7 @@ namespace TranslatorASCII
         public static void CutDobuleAnddot(string text)
         {
             
-            if (text.Count(c => c == '.')>=2 && Correnctions.IsCorrectDouble(text)==true)
+            if (text.Count(c => c == '.')>=2 && OnlyBool.IsCorrectDouble(text)==true)
             {
                 int lastDotIndex = text.LastIndexOf(".", System.StringComparison.Ordinal);
                 string firstPart = text.Remove(lastDotIndex);
