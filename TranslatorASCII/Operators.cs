@@ -6,9 +6,9 @@ namespace TranslatorASCII
 {
     class Operators
     {
-        public static void FindOperators(string CurrentString)
+        public static List<string> FindOperators(string CurrentString)
         {
-
+            List<string> operators=null;
             Console.WriteLine("Operators found in text:");
             for (int i = 0; i < CurrentString.Length; i++)
             {
@@ -17,54 +17,100 @@ namespace TranslatorASCII
                 if (value == 40)
                 {
                     Console.WriteLine(CurrentString[i] + "Opening bracket");
+                    operators.Add(CurrentString[i] + "Opening bracket");
                 }
                 if (value == 41)
                 {
-                    Console.WriteLine(CurrentString[i] + "Closing bracket");
+                    operators.Add(CurrentString[i] + "Closing bracket");
                 }
                 if (value == 42)
                 {
-                    Console.WriteLine(CurrentString[i] + "Multiplication operator");
+                    operators.Add(CurrentString[i] + "Multiplication operator");
                 }
                 if (value == 43)
                 {
-                    Console.WriteLine(CurrentString[i] + "Add operator");
+                    operators.Add(CurrentString[i] + "Add operator");
                 }
 
                 if (value == 45)
                 {
-                    Console.WriteLine(CurrentString[i] + "Substration operator");
+                    operators.Add(CurrentString[i] + "Substration operator");
                 }
                 if (value == 47)
                 {
-                    Console.WriteLine(CurrentString[i] + "Division operator");
+                    operators.Add(CurrentString[i] + "Division operator");
                 }
                 if (value == 61)
                 {
-                    Console.WriteLine(CurrentString[i] + "Equals operator");
+                    operators.Add(CurrentString[i] + "Equals operator");
                 }
                 if (value == 91)
                 {
-                    Console.WriteLine(CurrentString[i] + "Opening bracket");
+                    operators.Add(CurrentString[i] + "Opening bracket");
                 }
                 if (value == 93)
                 {
-                    Console.WriteLine(CurrentString[i] + "Closing bracket");
+                    operators.Add(CurrentString[i] + "Closing bracket");
                 }
                 if (value == 123)
                 {
-                    Console.WriteLine(CurrentString[i] + "Opening bracket");
+                    operators.Add(CurrentString[i] + "Opening bracket");
                 }
                 if (value == 124)
                 {
-                    Console.WriteLine(CurrentString[i] + "|");
+                    operators.Add(CurrentString[i] + "|");
                 }
                 if (value == 125)
                 {
-                    Console.WriteLine(CurrentString[i] + "Closing bracket");
+                    operators.Add(CurrentString[i] + "Closing bracket");
                 }
             }
+            return operators;
 
         }
+
+        public static List<string> FindWords(string text)
+        {
+            char[] delimiterChars = { '+', '-', '=', '*', '/', '(', ')', '{', '}', '|', ' ', '[', ']' };
+
+            //string text = "9A+4-g=9";
+            System.Console.WriteLine("Original text: '{0}'", text);
+
+            string[] words = text.Split(delimiterChars);
+            List<string> Wordz = null;
+            System.Console.WriteLine("{0} words in text:", words.Length);
+
+            foreach (string s in words)
+            {
+                System.Console.WriteLine(s);
+                Wordz.Add(s);
+                if (ASCIIGetter.cutForDouble(s) == true)
+                {
+                    OnlyBool.IntOrDouble(s);
+                }
+                else if ((s.Contains(".") || s.Contains(",")) && ASCIIGetter.cutForDouble(text) == false && (text.Length) > 0)
+                {
+                    // Console.WriteLine("Syntax ERROR");
+                    ASCIIGetter.CutDobuleAnddot(s);
+                }
+                else if (OnlyBool.IsIdent(text) == true && (text.Length) > 0)
+                {
+                    Console.WriteLine("IDENT");
+                }
+                else if (ASCIIGetter.cutForDouble(text) == false)
+                {
+                    ASCIIGetter.CutDobuleAnddot(text);
+                }
+
+
+
+            }
+            return Wordz;
+
+
+
+        }
+
+
     }
 }
