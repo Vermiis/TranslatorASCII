@@ -9,14 +9,14 @@ namespace TranslatorASCII
         public static List<string> FindOperators(string CurrentString)
         {
             List<string> operators = new List<string>();
-            Console.WriteLine("Operators found in text:");
+            
             for (int i = 0; i < CurrentString.Length; i++)
             {
                 // Console.WriteLine(CurrentString[i] + "\t" + "Unicode code is: " + (int)CurrentString[i]);
                 int value = (int)CurrentString[i];
                 if (value == 40)
                 {
-                    Console.WriteLine(CurrentString[i] + "Opening bracket");
+                    //Console.WriteLine(CurrentString[i] + "Opening bracket");
                     operators.Add(CurrentString[i] + "Opening bracket");
                 }
                 if (value == 41)
@@ -74,15 +74,15 @@ namespace TranslatorASCII
             char[] delimiterChars = { '+', '-', '=', '*', '/', '(', ')', '{', '}', '|', ' ', '[', ']' };
 
             //string text = "9A+4-g=9";
-            System.Console.WriteLine("Original text: '{0}'", text);
+           // System.Console.WriteLine("Original text: '{0}'", text);
 
             string[] words = text.Split(delimiterChars);
             List<string> Wordz = new List<string>();
-            System.Console.WriteLine("{0} words in text:", words.Length);
+           // System.Console.WriteLine("{0} words in text:", words.Length);
 
             foreach (string s in words)
             {
-                System.Console.WriteLine(s);
+                //System.Console.WriteLine(s);
                 Wordz.Add(s);
                 //if (ASCIIGetter.cutForDouble(s) == true)
                 //{
