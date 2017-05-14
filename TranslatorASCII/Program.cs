@@ -14,22 +14,23 @@ namespace TranslatorASCII
             //{
             //    // read from file
             //}
-            string a = "sd4+vv/-4=222.4=3,4";
-            Console.WriteLine("Podaj ciag znakow: ");
+           // string a = "sd4+vv/-4=222.4=3,4";
+           // Console.WriteLine("Podaj ciag znakow: ");
             string own = "";
 
             
             
 
-            own = Console.ReadLine();
+            own  = System.IO.File.ReadAllText(@"C:\Users\user\Documents\TranslatorASCII\TranslatorASCII\TextFile1.txt".ToString());
             List<string> ops =Operators.FindOperators(own);
             //var wor = Operators.FindWords(own);
 
 
             Operators.NameWords(own);
-
+           
+            
             //ASCIIGetter.cutt(own);
-           // ASCIIGetter.CutDobuleAnddot(own);
+            // ASCIIGetter.CutDobuleAnddot(own);
 
 
             System.Console.WriteLine("Press any key to see operators in text.");
