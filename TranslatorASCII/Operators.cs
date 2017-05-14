@@ -124,7 +124,7 @@ namespace TranslatorASCII
                 }
                 else if ((s.Contains(".") || s.Contains(",")) && ASCIIGetter.cutForDouble(text) == false && (text.Length) > 0)
                 {
-                    // Console.WriteLine("Syntax ERROR");
+                    //Console.WriteLine("Syntax ERROR");
                     ASCIIGetter.CutDobuleAnddot(s);
                 }
                 else if (OnlyBool.IsIdent(text) == true && (text.Length) > 0)
@@ -134,6 +134,10 @@ namespace TranslatorASCII
                 else if (ASCIIGetter.cutForDouble(text) == false)
                 {
                     ASCIIGetter.CutDobuleAnddot(text);
+                }
+                else
+                {
+                    Console.WriteLine("Syntax ERROR");
                 }
 
 
